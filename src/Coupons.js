@@ -4,14 +4,15 @@ import allCoupons from './allCoupons';
 
 class Coupons extends React.Component {
 
-claimCoupon(id) {
-  console.log("Coupon claimed!" + id);
-}
-
-
 render() {
 
-  let rows = allCoupons.map(coupon => {
+  const burgers = Math.floor(this.props.clicks);
+
+  let filteredCoupons = allCoupons.filter(
+    coupon => coupon.price <= burgers
+  );
+
+  let rows = filteredCoupons.map(coupon => {
     return ( 
       <div className="coupon" key={coupon.id}>
         <div className="coupon__offer">
@@ -23,7 +24,7 @@ render() {
         <div className="coupon__oldPrices">{coupon.oldPrice.toFixed(2)}</div>
       </div>
       <div className="coupon__button">
-        <button onClick={() => {this.claimCoupon(coupon.id)}}>
+        <button onClick={() => {this.props.claimCoupon(coupon.id)}}>
         <div className="coupon__price">{coupon.price}</div>
         <div className="coupon__claim">Claim!</div>
         </button>
@@ -41,7 +42,7 @@ render() {
       <h1>Coupons</h1>
       </div>
       <div className="content">
-        {rows}
+        {rows.length > 0 ? rows : "No coupons to claim."}
       </div>
       </>
           );
