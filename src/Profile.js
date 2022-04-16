@@ -40,8 +40,8 @@ render() {
         <div className="coupon__offerDesc">{coupon.desc}</div>
         </div>
       <div className="coupon__prices">
-        <div className="coupon__newPrices">{coupon.newPrice.toFixed(2)}</div>
-        <div className="coupon__oldPrices">{coupon.oldPrice.toFixed(2)}</div>
+        <div className="coupon__newPrice">{coupon.newPrice.toFixed(2)}</div>
+        <div className="coupon__oldPrice">{coupon.oldPrice.toFixed(2)}</div>
       </div>
       <div className="coupon__button">
         <div className="coupon__price">{coupon.count} pc</div>
